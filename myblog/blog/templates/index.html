@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+<title>Manojmantra | Blogs</title>
+<style>
+body {
+
+  margin-left: 10%;
+  margin-right: 10%;  
+  border: 4px ridge skyblue;
+padding: 10px 10px 10px 10px;
+  font-family: sans-serif, Arial;
+  background:skyblue;
+  color :brown;
+   }
+
+#navigation ul {margin: 0; padding: 0; 
+	list-style-type: none; list-style-image: none; }
+#navigation li {display: inline; }
+#navigation ul li a {text-decoration:none;  margin: 2px;
+	padding: 5px 20px 5px 20px; color: purple;
+	background: #000541; ;
+	}
+#navigation ul li a:hover {color: purple;
+	background: #AA456D; }
+a:hover{
+background-color: #AA456D;
+}
+#header {
+	background: #000541;
+	font: bold italic normal 230% 'Times New Roman', Times, serif;
+	<!letter-spacing: 0.2em;>
+	margin: 0;
+	padding: 15px 10px 15px 60px;
+	height:230px;
+}
+#sidebar-a {
+            float: left;
+            width: 280px;
+	    background: gray;
+            height:930px;
+	}
+
+#content {
+
+    margin-left:280px;
+   background: white;
+   font: italic normal 130% 'Times New Roman', Times, serif;	
+  
+   padding: 15px 10px 15px 10px;
+   height:900px;
+    }
+
+
+#footer {
+   clear:both;
+   background:teal;
+   font: italic blue normal 100% 'Times New Roman', Times, serif;	
+   margin: 0;
+   padding: 15px 10px 15px 60px;
+   color:blue;
+}
+   
+</style> 
+</head> 
+<body id="blog">
+<div class="head">
+<nav id="header">
+<center>
+<a href ="index.html"><b>Manojmantra</b></a>
+<p><font size=6>Feel It My Way</font></p>
+</center>
+<br>
+<div class="main">
+<nav id="navigation">
+<font size="4" >
+<ul id="menu-page" class="menu">
+<li id="menu-1" class="current_page_item menu-item-home menu-1"><a href="home.html" >Home</a></li>
+<li id="menu-5" class="menu-item-5"><a href="/" >blog</a></li>
+<li id="menu-2" class="menu-item-2"><a href="about.html" >About</a></li>
+<li id="menu-3" class="menu-item-3 "><a href="resume.html" >My Resume</a></li>
+<li id="menu-4" class="menu-item-4 "><a href="contactus.html" >Contact us</a>
+</li>
+</ul></font>
+</nav>
+</div>
+</nav></div>
+  <div id="sidebar-a">
+<center>
+<h1><u><b>Programming</b></u></h1>
+
+<p>C(0)
+<p>C++(0)
+<p>java(0)
+<p><a href="pyth.html"><font color ="brown">python(1)</font></a></p>
+<br><br>
+<h1><u><b>Blogs</b></u></h1>
+ <p><u>2012</u>
+<p><a href="november.html"><font color ="brown">November(2)</font></a></p>
+<p><a href="december.html"><font color ="brown">December(0)</font></a></p>
+<br>
+<p><u>2013</u>
+<p><a href="january.html"><font color ="brown">January(1)</font></a></p>
+</center>
+</div>
+<div class="container" id="content" >
+    <h1>Blog</h1>
+    <hr />
+ <div class="main">
+ <ul>
+    {% for post in posts.object_list %}
+        <div class="post">
+        <div class="title"><h2>{{ post.title }}</h2></div>
+        <h3>Written by {{ post.author.name }} on {{post.date}}</h3>
+        <p>{{ post.body }}</p>
+        
+        </div>
+<div class="commentlink"><a href="{% url blog.views.post post.pk %}">Comments </a></div>
+<hr />
+    {% endfor %}
+</ul>
+<!-- Next/Prev page links  -->
+
+    <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
+       <span class="step-links">
+            {% if posts.has_previous %}
+              <a href= "?page={{ posts.previous_page_number }}">previous &lt;&lt; </a>
+            {% endif %}
+
+            <span class="current">
+              &nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+            </span>
+
+            {% if posts.has_next %}
+              <a href="?page={{ posts.next_page_number }}"> &gt;&gt; next</a>
+            {% endif %}
+       </span>
+     </div>
+  
+</div>
+</div>
+<div class="foot">
+<nav id="footer">
+
+<table align="center" width="100%" border="0" cellpadding="1" cellspacing="1">
+<tr>
+<td align="left" width="33%" style="color:blue; padding-left:5px;"><script type="text/javascript">
+document.write ('<p> <span id="date-time">', new Date().toLocaleString(), '<\/span>.<\/p>')
+if (document.getElementById) onload = function () {
+	setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 50)
+}
+</script>
+</td>
+<td align="center" width="33%" style="color:blue;"> </td>
+<td align="right" width="33%" style="color:blue; padding-right:5px;">Site Updated On : 03/11/2012</td>
+</tr></table>
+<br>
+<h4><center>Developed By : Manoj Kumar Singh (Comp. Engg.)</center><h4>
+</nav></div>
+</body>
